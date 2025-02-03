@@ -87,7 +87,8 @@ main {
 .whatsapp-button img {
     width: 20px;
     height: 20px;
-    vertical-align: center;
+    vertical-align: middle;
+    justify-content: center;
     margin-right: 10px;
 }
 
