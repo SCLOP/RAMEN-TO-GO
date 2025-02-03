@@ -1,96 +1,41 @@
-/* General */
 body {
     font-family: Arial, sans-serif;
+    background-color: #fff5e6;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #fff5f5;
-    color: #333;
 }
-
-/* Header */
-.header {
-    background-color: #c71f1f;
+header {
+    background-color: #d60000;
     color: white;
     text-align: center;
     padding: 20px;
-    border-bottom: 5px solid #900;
 }
-
-.header h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-.header p {
-    font-size: 1.2rem;
-    margin: 5px 0 0;
-}
-
-/* Products Section */
-.products {
-    padding: 20px;
-    text-align: center;
-    background-color: #fdf1f1;
-}
-
-.products h2 {
-    font-size: 2rem;
-    color: #c71f1f;
-}
-
-.product {
-    display: inline-block;
+.menu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
     margin: 20px;
-    padding: 10px;
-    border: 2px solid #c71f1f;
-    border-radius: 10px;
-    background: white;
-    width: 250px;
-    text-align: center;
 }
-
-.product img {
+.item {
+    background: #ffe5b4;
+    border: 2px solid #d60000;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+}
+.item img {
     width: 100%;
     border-radius: 10px;
 }
-
-.product h3 {
-    font-size: 1.5rem;
-    color: #900;
-    margin: 10px 0;
-}
-
-.product p {
-    font-size: 1rem;
-    color: #555;
-}
-
-.price {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #c71f1f;
-    margin-top: 10px;
-}
-
-/* Order Section */
-.order {
-    text-align: center;
-    padding: 20px;
-    background-color: #c71f1f;
+footer {
+    background-color: #d60000;
     color: white;
-}
-
-.order a {
-    color: #ffebcd;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Footer */
-.footer {
     text-align: center;
     padding: 10px;
-    background-color: #900;
-    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
