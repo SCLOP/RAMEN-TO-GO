@@ -6,15 +6,13 @@
     <title>Ramen To Go</title>
     <link rel="stylesheet" href="styles.css">
 
- <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fef6e4;
-            background-image: url('icon-nuve.png');
-            background-repeat: repeat;
-            background-size: 200px;
+            overflow-x: hidden;
         }
 
         header {
@@ -79,18 +77,49 @@
             margin: 10px;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('icon-nuve.png');
-            background-repeat: repeat;
-            background-size: 200px;
-            opacity: 0.5;
-            z-index: -1;
+        .cloud {
+            position: absolute;
+            opacity: 0.3;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .cloud:nth-child(1) {
+            top: 20px;
+            left: 10%;
+            width: 150px;
+        }
+
+        .cloud:nth-child(2) {
+            top: 100px;
+            left: 50%;
+            width: 200px;
+        }
+
+        .cloud:nth-child(3) {
+            top: 200px;
+            left: 80%;
+            width: 180px;
+        }
+
+        .cloud:nth-child(4) {
+            top: 300px;
+            left: 30%;
+            width: 220px;
+        }
+
+        .cloud:nth-child(5) {
+            top: 400px;
+            left: 70%;
+            width: 170px;
         }
     </style>
     
@@ -147,5 +176,12 @@
          <p>© 2025 Ramen To Go. Todos los derechos reservados.</p>
         <p><strong>Propiedad de Gil-Sclop</strong></p>
     </footer>
+
+     <div class="cloud" style="background-image: url('icon-nuve.png');"></div>
+    <div class="cloud" style="background-image: url('icon-nuve.png');"></div>
+    <div class="cloud" style="background-image: url('icon-nuve.png');"></div>
+    <div class="cloud" style="background-image: url('icon-nuve.png');"></div>
+    <div class="cloud" style="background-image: url('icon-nuve.png');"></div>
+    
 </body>
 </html>
