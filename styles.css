@@ -25,6 +25,12 @@ h2 {
     text-align: center;
 }
 
+p {
+    color: #082545;
+    margin-top: 15px;
+    text-align: center;
+}
+
 main {
     padding: 20px;
 }
