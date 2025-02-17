@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Número de teléfono de WhatsApp
-        const telefono = "1234567890"; // Cambia esto por tu número de WhatsApp
+        const telefono = "556625084649"; // Cambia esto por tu número de WhatsApp
 
         // Enlace de WhatsApp con el mensaje
         const url = `https://wa.me/${telefono}?text=${mensaje}`;
