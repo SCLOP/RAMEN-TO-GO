@@ -220,3 +220,21 @@ button {
 button:hover {
     background-color: #e65c00;
 }
+
+
+.back-to-menu {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Color de fondo */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Eliminar el subrayado */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.back-to-menu:hover {
+  background-color: #45a049; /* Cambio de color al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
