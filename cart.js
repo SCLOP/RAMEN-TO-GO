@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Mostrar productos en el carrito
+    // Opciones de toppings disponibles
+    const availableToppings = ["Huevo", "Cebolla", "Alga", "Carne extra", "Queso", "Chiles"];
+
+    // Mostrar los productos en el carrito
     function renderCart() {
         cartItemsContainer.innerHTML = "";
 
@@ -18,13 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 itemElement.innerHTML = `
                     <img src="${item.image}" alt="${item.name}" class="cart-image">
                     <p>${item.name} - $${item.price} x ${item.quantity}</p>
-                    <p><strong>Toppings:</strong> ${item.toppings.join(", ") || "Ninguno"}</p>
+                    
+                    <label for="toppings-${index}"><strong>Elige tus toppings:</strong></label>
+                    <select multiple class="toppings-select" id="toppings-${index}" data-index="${index}">
+                        ${availableToppings.map(topping => `
+                            <option value="${topping}" ${item.toppings.includes(topping) ? "selected" : ""}>${topping}</option>
+                        `).join("")}
+                    </select>
+
+                    <button class="update-toppings" data-index="${index}">Actualizar Toppings</button>
                     <button class="remove-item" data-index="${index}">❌</button>
                 `;
                 cartItemsContainer.appendChild(itemElement);
             });
         }
 
+        // Calcular el total
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         totalPriceElement.textContent = `$${total}`;
     }
@@ -35,6 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const index = e.target.dataset.index;
             cart.splice(index, 1);
             localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+    });
+
+    // Actualizar los toppings de un producto
+    cartItemsContainer.addEventListener("click", function (e) {
+        if (e.target.classList.contains("update-toppings")) {
+            const index = e.target.dataset.index;
+            const toppingsSelect = document.getElementById(`toppings-${index}`);
+            const selectedToppings = Array.from(toppingsSelect.selectedOptions).map(option => option.value);
+
+            cart[index].toppings = selectedToppings;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Toppings actualizados!");
             renderCart();
         }
     });
@@ -54,26 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCart();
 });
 
-// Agregar productos al carrito
-document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", function () {
-        const name = this.dataset.name;
-        const price = parseInt(this.dataset.price);
-        const image = this.dataset.image;
-
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        // Preguntar por toppings
-        let toppings = prompt("Ingresa los toppings separados por comas (ejemplo: huevo, cebolla, algas)").split(",").map(t => t.trim());
-
-        // Buscar si el producto ya está en el carrito
-        const existingItem = cart.find(item => item.name === name);
-        if (existingItem) {
-            existingItem.quantity += 1;
-            existingItem.toppings.push(...toppings);
-        } else {
-            cart.push({ name, price, quantity: 1, image, toppings });
-        }
 
         localStorage.setItem("cart", JSON.stringify(cart));
         alert(`${name} agregado al carrito con toppings: ${toppings.join(", ") || "Ninguno"}`);
