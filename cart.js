@@ -53,3 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderCart();
 });
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", function () {
+        const name = this.dataset.name;
+        const price = parseInt(this.dataset.price);
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Buscar si el producto ya está en el carrito
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${name} agregado al carrito.`);
+    });
+});
+
